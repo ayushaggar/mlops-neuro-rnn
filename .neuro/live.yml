@@ -65,6 +65,26 @@ jobs:
         cd $[[ volumes.project.mount ]]
         python -u $[[ volumes.code.mount ]]/train.py --data $[[ volumes.data.mount ]]
 
+  serve:
+    image: $[[ images.myimage.ref ]]
+    detach: False
+    life_span: 10d
+    volumes:
+      - $[[ volumes.data.ref_ro ]]
+      - $[[ volumes.code.ref_ro ]]
+      - $[[ volumes.config.ref_ro ]]
+      - $[[ volumes.results.ref_rw ]]
+    env:
+      EXPOSE_SSH: "yes"
+      PYTHONPATH: $[[ volumes.code.mount ]]
+    bash: |
+        cd $[[ volumes.project.mount ]]
+        pip install bottle
+        python -u $[[ volumes.code.mount ]]/server.py
+    http_auth: False
+    browse: True
+    http_port: 5000
+
   multitrain:
     image: $[[ images.myimage.ref ]]
     detach: False
