@@ -19,14 +19,16 @@ neuro-flow upload ALL
 
 ```
 
-```
 For Training model
+```
+
 neuro-flow run train
 
 ```
 
-```
 For Serving model
+```
+
 neuro-flow run serve
 
 ```
@@ -39,8 +41,10 @@ Then check predicted model  here -
 https://mlops-neuro-rnn-serve--ayushaggar.jobs.neuro-compute.org.neu.ro/predict/albert
 where mlops-neuro-rnn is project name, serve is job name and ayushaggar is neuro account details
 
-```
 For Testing model and Serving locust
+
+```
+
 neuro-flow run locustrun
 
 ```
