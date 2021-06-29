@@ -113,12 +113,15 @@ def predict(line, n_predictions=3):
     return predictions
 
 
-@route('/<input_line>')
+@route('/predict/<input_line>')
 def index(input_line):
     print('line ', input_line)
     result = predict(input_line, 1)
     print(result)
     return {'result': result[0][1]}
 
+@route('/')
+def welcome():
+    return {'result': 'welcome use this - https://mlops-neuro-rnn-serve--ayushaggar.jobs.neuro-compute.org.neu.ro/predict/albert'}
 
-run(host='localhost', port=5000)
+run(host='0.0.0.0')

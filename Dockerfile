@@ -15,5 +15,4 @@ COPY setup.cfg .
 
 COPY requirements.txt .
 RUN pip install --progress-bar=off -U --no-cache-dir -r requirements.txt
-RUN pip install bottle
 RUN ssh-keygen -f /id_rsa -t rsa -N neuro -q
